@@ -1,0 +1,19 @@
+import {
+  FETCH_MOVIES,
+  FETCH_MOVIES_FAIL,
+  FETCH_MOVIES_SUCCESS
+} from './constants'
+
+export default {
+  [FETCH_MOVIES] (state) {
+    state.isLoading = true
+  },
+  [FETCH_MOVIES_SUCCESS] (state, payload) {
+    state.isLoading = false
+    state.movies = payload.results
+  },
+  [FETCH_MOVIES_FAIL] (state, payload) {
+    state.isLoading = false
+    state.error = payload.body.status_message
+  }
+}
