@@ -1,3 +1,5 @@
 export default {
-  tvshowData: state => state
+  tvshow: state => state.tvshow,
+  isLoading: state => state.isLoading,
+  error: state => state.error
 }

@@ -15,12 +15,12 @@ export default new Router({
       component: LoginPage
     },
     {
-      path: '/movie',
+      path: '/movies',
       name: 'Movies',
       component: MoviesPage
     },
     {
-      path: '/tvshow',
+      path: '/tvshows',
       name: 'TVShow',
       component: TVShowPage
     }

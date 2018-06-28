@@ -1,6 +1,7 @@
 <template>
     <div>
-        <ul v-for="tv in tvshowData.tvshow" :key="tv.id">
+        <spinner v-bind:isLoading="isLoading" />
+        <ul v-if="!isLoading" v-for="tv in tvshow" :key="tv.id">
             <li >
                 {{tv}}
             </li>
@@ -10,6 +11,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
+import spinner from '@/components/spinner'
 
 export default {
   name: 'TVShowPage',
@@ -23,8 +26,13 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'tvshowData'
+      'tvshow',
+      'isLoading',
+      'error'
     ])
+  },
+  components: {
+    spinner
   }
 }
 </script>
