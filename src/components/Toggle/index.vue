@@ -1,4 +1,5 @@
 <template>
+<div class="row form-group">
     <div class="btn-group btn-group-toggle mt-4" data-toggle="buttons">
         <button class="btn btn-outline-secondary" :class="{ active: isMovie }" v-on:click="toggleMovie" >
            Movies
@@ -7,13 +8,12 @@
             TV Shows
         </button>
     </div>
+    </div>
 </template>
 
 <script>
-import router from '@/router'
-
 export default {
-  name: 'Navbar',
+  name: 'Toggle',
   data () {
     return {
       isMovie: false,
@@ -27,7 +27,7 @@ export default {
       }
       this.isTVShow = false
       this.isMovie = true
-      router.push({ path: '/movies' })
+      this.$emit('toggle', true)
     },
     toggleTVShow () {
       if (this.isTVShow) {
@@ -35,7 +35,7 @@ export default {
       }
       this.isMovie = false
       this.isTVShow = true
-      router.push({ path: '/tvshows' })
+      this.$emit('toggle', false)
     }
   }
 }

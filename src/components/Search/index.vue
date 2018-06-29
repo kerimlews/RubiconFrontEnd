@@ -1,5 +1,6 @@
 <template>
-    <div class="">
+<div class="d-flex justify-content-center align-items-center">
+    <div class="form-group col-8">
         <input
             type="text"
             class="form-control"
@@ -10,6 +11,7 @@
             @input="$emit('onChange', $event.target.value)"
         >
     </div>
+  </div>
 </template>
 
 <script>
