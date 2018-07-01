@@ -1,23 +1,30 @@
 <template>
   <div>
-    <app-toggle @toggle="showMovies = $event" />
+    <app-toggle :showMovie="showMovies" @toggle="toggle" />
     <app-movies v-if="showMovies"/>
     <app-tvshow v-if="!showMovies"/>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 import appToggle from '@/components/Toggle'
 
-import appMovies from './Movies'
-import appTvshow from './TVShow'
+import appMovies from './components/Movies'
+import appTvshow from './components/TVShow'
 
 export default {
   name: 'Content',
-  data () {
-    return {
-      showMovies: false
-    }
+  computed: {
+    ...mapGetters([
+      'showMovies'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'toggle'
+    ])
   },
   components: {
     appMovies,

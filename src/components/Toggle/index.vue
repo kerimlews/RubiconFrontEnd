@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  props: ['showMovie'],
   name: 'Toggle',
   data () {
     return {
@@ -27,7 +28,7 @@ export default {
       }
       this.isTVShow = false
       this.isMovie = true
-      this.$emit('toggle', true)
+      this.$store.dispatch('toggleMainContent', true)
     },
     toggleTVShow () {
       if (this.isTVShow) {
@@ -35,7 +36,7 @@ export default {
       }
       this.isMovie = false
       this.isTVShow = true
-      this.$emit('toggle', false)
+      this.$store.dispatch('toggleMainContent', false)
     }
   }
 }

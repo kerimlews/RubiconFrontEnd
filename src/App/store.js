@@ -1,16 +1,14 @@
-import mutations from './mutations'
 import actions from './actions'
+import mutations from './mutations'
 import getters from './getters'
 
 const state = {
-  movies: [],
-  isLoading: false,
-  error: null
+  showMainContent: true
 }
 
 export default {
   state,
-  mutations,
   actions,
+  mutations,
   getters
 }

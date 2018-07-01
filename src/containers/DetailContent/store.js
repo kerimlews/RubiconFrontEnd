@@ -1,31 +1,18 @@
+import mutations from './mutations'
+import actions from './actions'
+import getters from './getters'
 
-const SHOW_DETAIL_MOVIE = 'SHOW_DETAIL_MOVIE'
-const SHOW_DETAIL_TVSHOW = 'SHOW_DETAIL_TVSHOW'
+const state = {
+  showDetailMovie: false,
+  item: null,
+  videos: [],
+  isLoadingVideos: false,
+  type: null
+}
 
 export default {
-  state: {
-    showDetailMovie: false,
-    item: null
-  },
-  mutations: {
-    [SHOW_DETAIL_MOVIE] (state, payload) {
-      state.showDetailMovie = true
-      state.item = payload
-    },
-    [SHOW_DETAIL_TVSHOW] (state, payload) {
-      state.showDetailMovie = false
-      state.item = payload
-    }
-  },
-  actions: {
-    showDetailsMovie ({ commit }, item) {
-      commit(SHOW_DETAIL_MOVIE, item)
-    },
-    showDetailsTVShow ({ commit }, item) {
-      commit(SHOW_DETAIL_TVSHOW, item)
-    }
-  },
-  getters: {
-    item: state => state.item
-  }
+  state,
+  mutations,
+  actions,
+  getters
 }

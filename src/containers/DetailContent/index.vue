@@ -1,43 +1,48 @@
 <template>
-  <div>
+  <div class="container">
     <button
-      :click="goBack"
+      @click="goBack"
+      class="btn btn-outline-secondary"
     >
       <i class="fa fa-arrow-left"/>
       Back
     </button>
     <div>
       <app-card
+        :type="type"
         :item="item"
-        :video="video"
-        :showDetails="true"
+        :videos="videos"
+        :isShowDetails="true"
+        :isLoading="isLoadingVideos"
       />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 import appCard from '@/components/card'
 
 export default {
-  props: ['item'],
   name: 'DetailContent',
-  data () {
-    return {
-
-    }
+  beforeMount () {
+    this.fetchVideos(this.item.id)
   },
   computed: {
     ...mapGetters([
-      'item'
+      'videos',
+      'item',
+      'type',
+      'showDetailsMovie',
+      'isLoadingVideos'
     ])
   },
   methods: {
-    goBack () {
-      console.log('go back')
-    }
+    ...mapActions([
+      'goBack',
+      'fetchVideos'
+    ])
   },
   components: {
     appCard

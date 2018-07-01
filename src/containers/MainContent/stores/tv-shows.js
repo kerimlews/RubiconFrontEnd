@@ -1,6 +1,6 @@
-import mutations from './mutations'
-import actions from './actions'
-import getters from './getters'
+import mutations from '../mutations/tv-shows'
+import actions from '../actions/tv-shows'
+import getters from '../getters/tv-shows'
 
 const state = {
   tvshows: [],

@@ -5,7 +5,7 @@ import {
   SEARCH_TVSHOWS,
   SEARCH_TVSHOWS_FAIL,
   SEARCH_TVSHOWS_SUCCESS
-} from './constants'
+} from '../constants/tv-shows'
 
 export default {
   [FETCH_TVSHOWS] (state) {

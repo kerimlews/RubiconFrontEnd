@@ -5,7 +5,7 @@ import {
   SEARCH_MOVIES,
   SEARCH_MOVIES_FAIL,
   SEARCH_MOVIES_SUCCESS
-} from './constants'
+} from '../constants/movies'
 
 export default {
   [FETCH_MOVIES] (state) {

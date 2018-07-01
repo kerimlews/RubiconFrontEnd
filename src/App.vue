@@ -29,7 +29,7 @@ export default {
   @import '../node_modules/bootstrap/scss/bootstrap.scss';
 
   .img {
-    height: 35rem;
-    width: 26rem;
+    height: 25rem;
+    width: 16rem;
   }
 </style>

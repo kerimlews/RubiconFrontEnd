@@ -1,7 +1,11 @@
-import movieStore from './Movies/store'
-import tvshowStore from './TVShow/store'
+import movieStore from './stores/movies'
+import tvshowStore from './stores/tv-shows'
+import mainContentStore from './stores/main-content'
 
 export default {
-  movieStore,
-  tvshowStore
+  modules: {
+    movieStore,
+    tvshowStore,
+    mainContentStore
+  }
 }

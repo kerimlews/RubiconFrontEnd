@@ -1,20 +1,20 @@
 <template>
-  <div class="container">
+  <div>
     <div class="container">
-        <app-search
-          :value="search"
-          @onChange="onChangeSearch"
-        />
+      <app-search
+        :value="search"
+        @onChange="onChangeSearch"
+      />
     </div>
     <div class="container">
-        <app-spinner
-          :isLoading="isLoadingMovies"
-        />
-        <app-list
-          :isLoading="isLoadingMovies"
-          :items="moviesData"
-          :showDetails="showDetails"
-        />
+      <app-spinner
+        :isLoading="isLoadingTVShow"
+      />
+      <app-list
+        :isLoading="isLoadingTVShow"
+        :items="tvshowData"
+        :showDetails="showDetails"
+      />
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ import appSearch from '@/components/search'
 import appList from '@/components/list'
 
 export default {
-  name: 'MoviesPage',
+  name: 'TVShowPage',
   data () {
     return {
       search: '',
@@ -35,34 +35,31 @@ export default {
     }
   },
   beforeMount: function () {
-    this.fetchMovies()
+    this.fetchTVShows()
   },
   methods: {
     ...mapActions([
-      'fetchMovies',
-      'searchMovies',
-      'showDetailsMovie'
+      'searchTVShows',
+      'fetchTVShows',
+      'showDetails'
     ]),
     onChangeSearch (value) {
       this.search = value
       if (value.length > 3) {
         this.isFetched = true
-        this.searchMovies(value)
+        this.searchTVShows(value)
       }
       if (this.isFetched && value.length === 3) {
-        this.fetchMovies()
+        this.fetchTVShows()
         this.isFetched = false
       }
-    },
-    showDetails (item) {
-      this.$store.dispatch('showDetailsMovie', item)
     }
   },
   computed: {
     ...mapGetters([
-      'isLoadingMovies',
-      'moviesData',
-      'errorMovies'
+      'tvshowData',
+      'isLoadingTVShow',
+      'errorTVShow'
     ])
   },
   components: {
