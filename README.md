@@ -2,6 +2,13 @@
 
 > A Vue.js project
 
+More: 
+    - in common/ajax.js contain requests if any problem just change key ApiKey
+    - App is divide in two content which communicate via Vuex
+    - Main Content is clear way to bulding big or complex component
+    - I used this same strucure as in React
+    - Components contain reusable components 
+    - I wanted to suprise you :) I know Angular and React as well :)
 ## Build Setup
 
 ``` bash
