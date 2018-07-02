@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    <button
-      @click="goBack"
-      class="btn btn-outline-secondary"
-    >
-      <i class="fa fa-arrow-left"/>
-      Back
-    </button>
+    <div class="form-group mt-4">
+      <button
+        @click="goBack"
+        class="btn btn-outline-secondary"
+      >
+        <i class="fa fa-arrow-left"/>
+        Back
+      </button>
+    </div>
     <div>
       <app-card
         :type="type"
@@ -26,9 +28,6 @@ import appCard from '@/components/card'
 
 export default {
   name: 'DetailContent',
-  beforeMount () {
-    this.fetchVideos(this.item.id)
-  },
   computed: {
     ...mapGetters([
       'videos',
@@ -40,8 +39,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'goBack',
-      'fetchVideos'
+      'goBack'
     ])
   },
   components: {

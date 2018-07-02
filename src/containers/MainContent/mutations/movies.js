@@ -10,6 +10,7 @@ import {
 export default {
   [FETCH_MOVIES] (state) {
     state.isLoading = true
+    state.error = null
   },
   [FETCH_MOVIES_SUCCESS] (state, payload) {
     state.isLoading = false
@@ -17,10 +18,11 @@ export default {
   },
   [FETCH_MOVIES_FAIL] (state, payload) {
     state.isLoading = false
-    state.error = payload.body.status_message
+    state.error = payload
   },
   [SEARCH_MOVIES] (state) {
     state.isLoading = true
+    state.error = null
   },
   [SEARCH_MOVIES_SUCCESS] (state, payload) {
     state.isLoading = false
@@ -28,6 +30,6 @@ export default {
   },
   [SEARCH_MOVIES_FAIL] (state, payload) {
     state.isLoading = false
-    state.error = payload.body.status_message
+    state.error = payload
   }
 }

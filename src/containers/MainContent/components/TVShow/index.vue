@@ -1,19 +1,24 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="container">
+    <div class="">
       <app-search
         :value="search"
         @onChange="onChangeSearch"
       />
     </div>
-    <div class="container">
+    <div>
+      <app-alert
+        v-if="errorTVShow != null"
+        :message="errorTVShow"
+      />
       <app-spinner
-        :isLoading="isLoadingTVShow"
+        v-if="isLoadingTVShow"
       />
       <app-list
+        :type="type"
         :isLoading="isLoadingTVShow"
         :items="tvshowData"
-        :showDetails="showDetails"
+        :showDetails="showDetailsTVShow"
       />
     </div>
   </div>
@@ -25,11 +30,13 @@ import { mapGetters, mapActions } from 'vuex'
 import appSpinner from '@/components/spinner'
 import appSearch from '@/components/search'
 import appList from '@/components/list'
+import appAlert from '@/components/alert'
 
 export default {
   name: 'TVShowPage',
   data () {
     return {
+      type: 'TV Show',
       search: '',
       isFetched: false
     }
@@ -41,7 +48,7 @@ export default {
     ...mapActions([
       'searchTVShows',
       'fetchTVShows',
-      'showDetails'
+      'showDetailsTVShow'
     ]),
     onChangeSearch (value) {
       this.search = value
@@ -49,7 +56,7 @@ export default {
         this.isFetched = true
         this.searchTVShows(value)
       }
-      if (this.isFetched && value.length === 3) {
+      if (this.isFetched && value.length <= 3) {
         this.fetchTVShows()
         this.isFetched = false
       }
@@ -65,7 +72,8 @@ export default {
   components: {
     appSpinner,
     appSearch,
-    appList
+    appList,
+    appAlert
   }
 }
 </script>

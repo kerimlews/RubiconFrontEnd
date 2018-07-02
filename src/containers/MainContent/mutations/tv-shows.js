@@ -10,6 +10,7 @@ import {
 export default {
   [FETCH_TVSHOWS] (state) {
     state.isLoading = true
+    state.error = null
   },
   [FETCH_TVSHOWS_SUCCESS] (state, payload) {
     state.isLoading = false
@@ -17,10 +18,11 @@ export default {
   },
   [FETCH_TVSHOWS_FAIL] (state, payload) {
     state.isLoading = false
-    state.error = payload.body.status_message
+    state.error = payload
   },
   [SEARCH_TVSHOWS] (state) {
     state.isLoading = true
+    state.error = null
   },
   [SEARCH_TVSHOWS_SUCCESS] (state, payload) {
     state.isLoading = false
@@ -28,6 +30,6 @@ export default {
   },
   [SEARCH_TVSHOWS_FAIL] (state, payload) {
     state.isLoading = false
-    state.error = payload.body.status_message
+    state.error = payload
   }
 }

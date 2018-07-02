@@ -9,6 +9,7 @@
       class="m-2 h-25"
     >
       <app-card
+        :type="type"
         :item="item"
         :showDetails="showDetails"
       />
@@ -20,7 +21,24 @@
 import appCard from '@/components/card'
 
 export default {
-  props: ['isLoading', 'items', 'showDetails'],
+  props: {
+    type: {
+      type: String,
+      required: true
+    },
+    isLoading: {
+      type: Boolean,
+      required: true
+    },
+    items: {
+      type: Array,
+      required: true
+    },
+    showDetails: {
+      type: Function,
+      required: true
+    }
+  },
   name: 'List',
   components: {
     appCard

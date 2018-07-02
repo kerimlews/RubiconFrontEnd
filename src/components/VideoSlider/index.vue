@@ -1,10 +1,10 @@
 <template>
-  <div v-if="items.length > 0" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div v-if="items.length > 0" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div v-for="(item, i) in items" :key="item.id" class="carousel-item h-100" :class="{ active: i === index }">
             <iframe
-             class="d-block w-100"
-             :src="getVideo(item.key)"
+              class="d-block w-100"
+              :src="getVideo(item.key)"
             />
         </div>
     </div>
@@ -20,16 +20,21 @@
 </template>
 <script>
 export default {
-  props: ['items'],
+  props: {
+    items: {
+      type: Array,
+      required: true
+    }
+  },
   name: 'VideoSlider',
   data () {
     return {
-        index: 0
+      index: 0
     }
   },
   methods: {
     getVideo (key) {
-      return "https://www.youtube.com/embed/" + key
+      return 'https://www.youtube.com/embed/' + key
     },
     prev () {
       if (this.index === 0) {

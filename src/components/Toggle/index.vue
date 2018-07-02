@@ -13,12 +13,17 @@
 
 <script>
 export default {
-  props: ['showMovie'],
+  props: {
+    showMovie: {
+      type: Boolean,
+      required: true
+    }
+  },
   name: 'Toggle',
   data () {
     return {
-      isMovie: false,
-      isTVShow: true
+      isMovie: this.showMovie,
+      isTVShow: !this.showMovie
     }
   },
   methods: {

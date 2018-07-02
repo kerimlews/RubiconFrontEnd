@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../node_modules/bootstrap/scss/bootstrap.scss';
+  @import '../node_modules/bootstrap/scss/bootstrap';
 
   .img {
     height: 25rem;

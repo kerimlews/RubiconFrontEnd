@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="details">
-    <span v-if="isLoading">Loading..</span>
+    <app-spinner v-if="isLoading" />
     <div v-if="!isLoading">
       <img
         v-if="!hasVideo"
@@ -15,7 +15,7 @@
     </div>
     </div>
     <div class="card-body">
-      <p class="card-text">
+      <p class="card-text card-title-text">
         {{item.title || item.name}}
       </p>
       <div v-if="hasVideo">
@@ -27,10 +27,13 @@
 </template>
 
 <script>
+import props from './props'
+
 import appVideoSlider from '@/components/VideoSlider'
+import appSpinner from '@/components/spinner'
 
 export default {
-  props: ['type', 'item', 'showDetails', 'videos', 'type', 'isLoading'],
+  props,
   name: 'Card',
   computed: {
     hasVideo () {
@@ -44,17 +47,26 @@ export default {
     details () {
       this.showDetails != null &&
         this.showDetails({
-            item: this.item,
-            value: this.item.title != null,
-            type: this.type
-          })
+          item: this.item,
+          value: this.item.title != null,
+          type: this.type
+        })
     },
     getImage (name) {
       return 'https://image.tmdb.org/t/p/w500/' + name
     }
   },
   components: {
-    appVideoSlider
+    appVideoSlider,
+    appSpinner
   }
 }
 </script>
+<style lang="scss">
+  .card-title-text {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 13rem;
+    text-overflow: ellipsis;
+  }
+</style>
